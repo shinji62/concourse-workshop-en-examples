@@ -1,0 +1,20 @@
+resources:
+- name: concourse-workshop-repos
+  type: git
+  source:
+    uri: https://github.com/Pivotal-Japan/concourse-workshop-en-examples.git
+    branch: master
+
+
+jobs:
+- name: Repave-Diego-cell
+  plan:
+  - get: concourse-workshop-repos
+  - task: repaving by bosh
+    file: concourse-workshop-repos/day-3/tasks/repave-diego-cell/task.yml
+    params:
+      SKIP_SSL_VALIDATION: true
+      OPSMAN_URL: {{opsmanager_url}}
+      OPSMAN_USERNAME: {{opsmanager_username}}
+      OPSMAN_PASSWORD: {{opsmanager_password}}
+      MAX_IN_FLIGHT: 1
