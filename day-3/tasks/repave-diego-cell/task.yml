@@ -3,8 +3,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: pcfnorm/rootfs
-    tag: release-candidate
+    repository: getourneau/alpine-pcf-utils
 
 inputs:
   - name: concourse-workshop-repos

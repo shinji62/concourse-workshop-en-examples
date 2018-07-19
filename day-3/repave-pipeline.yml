@@ -10,7 +10,7 @@ jobs:
 - name: Repave-Diego-cell
   plan:
   - get: concourse-workshop-repos
-  - task: repaving by bosh
+  - task: Bosh Repaving
     file: concourse-workshop-repos/day-3/tasks/repave-diego-cell/task.yml
     params:
       SKIP_SSL_VALIDATION: true
