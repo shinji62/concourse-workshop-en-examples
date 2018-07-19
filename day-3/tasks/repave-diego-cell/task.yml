@@ -17,4 +17,4 @@ params:
   MAX_IN_FLIGHT: 1
 
 run:
-  path: concourse-workshop-repos/day3/tasks/repave-diego-cell/task.sh
+  path: concourse-workshop-repos/day-3/tasks/repave-diego-cell/task.sh
