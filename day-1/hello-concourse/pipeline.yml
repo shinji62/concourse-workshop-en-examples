@@ -1,0 +1,28 @@
+---
+
+resources:
+- name: my-git-repository
+  type: git
+  source:
+    repository: yourditrepository.git  
+    branch: master
+
+
+jobs:
+- name: hello-world
+  plan:
+  - get: my-git-repository
+  - task: say-hello
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: alpine}
+      inputs:
+      - name: my-git-repository
+      run:
+        path: bash
+        args:
+        - c
+        - |
+           cat my-git-repository/test.txt
