@@ -26,7 +26,7 @@ var _ = Describe("Main", func() {
 		defer res.Body.Close()
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(res.StatusCode).Should(Equal(200))
-		Expect(string(body)).Should(Equal("Hello, Concourse Workshop"))
+		Expect(string(body)).Should(Equal("Hello, Concourse Workshop AGAIN"))
 
 	})
 	AfterEach(func() {
