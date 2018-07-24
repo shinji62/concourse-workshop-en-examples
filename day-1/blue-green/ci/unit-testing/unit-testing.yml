@@ -7,7 +7,7 @@ image_resource:
     repository: getourneau/alpine-golang-bash
 
 inputs:
-  - name: concourse-workshop-bg-ci
+  - name: concourse-workshop-bg
 
 run:
-  path: concourse-workshop-bg-ci/day-1/blue-green/ci/unit-testing/unit-testing
+  path: concourse-workshop-bg/day-1/blue-green/ci/unit-testing/unit-testing

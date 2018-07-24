@@ -6,10 +6,7 @@ export PATH=$GOPATH/bin:$PATH
 ls -lah
 
 mkdir -p $GOPATH/src/github.com/Pivotal-Japan/concourse-workshop-bg/
-cp -aR ./concourse-workshop-bg-ci/day-1/blue-green/* $GOPATH/src/github.com/Pivotal-Japan/concourse-workshop-bg/
+cp -aR ./concourse-workshop-bg/day-1/blue-green/* $GOPATH/src/github.com/Pivotal-Japan/concourse-workshop-bg/
 cd $GOPATH/src/github.com/Pivotal-Japan/concourse-workshop-bg/
 
-
-go get github.com/onsi/ginkgo/ginkgo
-go get github.com/onsi/gomega
 make test
