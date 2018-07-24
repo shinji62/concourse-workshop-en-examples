@@ -4,7 +4,7 @@ resources:
 - name: my-git-repository
   type: git
   source:
-    repository: yourditrepository.git  
+    repository: yourditrepository.git
     branch: master
 
 
@@ -25,4 +25,4 @@ jobs:
         args:
         - c
         - |
-           cat my-git-repository/test.txt
+           cat my-git-repository/day-1/hello-concourse/test.txt

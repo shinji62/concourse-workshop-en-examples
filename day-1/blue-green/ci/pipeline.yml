@@ -1,0 +1,48 @@
+---
+groups:
+  - name: concourse-workshop-bg
+    jobs:
+    - unit-testing
+    - deploy-it
+
+jobs:
+- name: unit-testing
+  public: true
+  serial: true
+  plan:
+   - get: concourse-workshop-bg-ci
+     resource: concourse-workshop-bg-develop
+     trigger: true
+   - task: unit-testing
+     file: concourse-workshop-bg-ci/ci/unit-testing/unit-testing.yml
+
+- name: deploy-it
+  public: true
+  serial: true
+  plan:
+  - get: concourse-workshop-bg-ci
+    resource: concourse-workshop-bg-master
+    passed: [unit-testing]
+    trigger: true
+  - put: resource-deploy-to-pws
+    params:
+      manifest: concourse-workshop-bg-ci/manifest.yml
+      path: concourse-workshop-bg-ci/
+      current_app_name: concourse-workshop-bg
+
+resources:
+- name: concourse-workshop-bg
+  type: git
+  source:
+    uri: git@github.com:
+    branch: master
+    private_key: {{private-key-github-concourse}}
+
+- name: resource-deploy-to-pcf
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-org}}
+    space: {{cf-space}}

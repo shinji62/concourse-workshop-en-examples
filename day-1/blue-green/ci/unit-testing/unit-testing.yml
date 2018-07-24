@@ -1,0 +1,13 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: getourneau/alpine-golang-bash
+
+inputs:
+  - name: concourse-workshop-bg-ci
+
+run:
+  path: concourse-workshop-bg-ci/day-1/blue-green/ci/unit-testing/unit-testing
