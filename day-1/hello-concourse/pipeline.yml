@@ -4,9 +4,8 @@ resources:
 - name: my-git-repository
   type: git
   source:
-    repository: yourditrepository.git
+    uri: yourditrepository.git
     branch: master
-
 
 jobs:
 - name: hello-world
@@ -17,12 +16,12 @@ jobs:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: alpine}
+        source: {repository: getourneau/alpine-bash-git}
       inputs:
       - name: my-git-repository
       run:
         path: bash
         args:
-        - c
+        - -c
         - |
-           cat my-git-repository/day-1/hello-concourse/test.txt
+           cat my-git-repository/day-1/hello-concourse/test

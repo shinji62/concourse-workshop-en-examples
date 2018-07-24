@@ -1,0 +1,13 @@
+###
+# Parameters needed for the blue green pipeline
+###
+# PCF API
+cf-api: CHANGEME
+
+#CREDENTIALS TO BE USE FOR PUSHING
+cf-username: CHANGEME
+cf-password: CHANGEME
+
+#ORG/SPACE WHERE THE APPLICATION WILL BE DEPLOY
+cf-org: CHANGEME
+cf-space: CHANGEME

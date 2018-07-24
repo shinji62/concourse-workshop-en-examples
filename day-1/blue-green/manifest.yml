@@ -1,7 +1,6 @@
 ---
 applications:
-- name: concourse-workshop-bg
-  host: dconcourse-workshop-bg
+- name: app-name-bg
   buildpack: go_buildpack
   disk_quota: 1024M
   instances: 1

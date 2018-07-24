@@ -1,6 +1,6 @@
 ---
 groups:
-  - name: concourse-workshop-bg
+  - name: blue-green
     jobs:
     - unit-testing
     - deploy-it
@@ -10,33 +10,31 @@ jobs:
   public: true
   serial: true
   plan:
-   - get: concourse-workshop-bg-ci
-     resource: concourse-workshop-bg-develop
+   - get: concourse-workshop-bg
      trigger: true
    - task: unit-testing
-     file: concourse-workshop-bg-ci/ci/unit-testing/unit-testing.yml
+     file: concourse-workshop-bg/day-1/blue-green/ci/unit-testing/unit-testing.yml
 
-- name: deploy-it
+- name: deploy-it-blue-green
   public: true
   serial: true
   plan:
-  - get: concourse-workshop-bg-ci
+  - get: concourse-workshop-bg
     resource: concourse-workshop-bg-master
     passed: [unit-testing]
     trigger: true
-  - put: resource-deploy-to-pws
+  - put: resource-deploy-to-pcf
     params:
-      manifest: concourse-workshop-bg-ci/manifest.yml
-      path: concourse-workshop-bg-ci/
-      current_app_name: concourse-workshop-bg
+      manifest: concourse-workshop-bg/day-1/blue-green/manifest.yml
+      path: concourse-workshop-bg/day-1/blue-green/
+      current_app_name: app-name-bg
 
 resources:
 - name: concourse-workshop-bg
   type: git
   source:
-    uri: git@github.com:
+    uri: yourditrepository.git
     branch: master
-    private_key: {{private-key-github-concourse}}
 
 - name: resource-deploy-to-pcf
   type: cf
